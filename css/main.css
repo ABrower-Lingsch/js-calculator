@@ -36,19 +36,27 @@ body {
     background-color: rgb(97, 97, 97);
 }
 
-.math {
+.operator {
     background-color: rgb(253, 141, 14);
 }
 
-.math:active {
+.result {
+    background-color: rgb(253, 141, 14);
+}
+
+.result:active {
     background-color: rgb(206, 113, 7);
 }
 
-.numbers {
+.operator:active {
+    background-color: rgb(206, 113, 7);
+}
+
+.number {
     background-color: rgb(120, 120, 120);
 }
 
-.numbers:active {
+.number:active {
     background-color: rgb(171, 170, 170);
 }
 
@@ -68,6 +76,8 @@ body {
     justify-content: space-around;
     flex-direction: column;
     padding: 20px;
+    word-wrap: break-word;
+    word-break: break-all;
 }
 
 .current {
