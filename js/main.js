@@ -15,6 +15,7 @@ numberButtons.forEach((button) => {
 function pushNumber(button) {
   //   alert(this.innerHTML);
   calculation.push(this.innerHTML);
+  updatedCurrent.value = calculation.join("");
 }
 
 operatorButtons.forEach((button) => {
@@ -24,18 +25,24 @@ operatorButtons.forEach((button) => {
 function pushOperator(button) {
   //   alert(this.innerHTML);
   calculation.push(this.innerHTML);
+  updatedCurrent.value = calculation.join("");
 }
 
 acButton.addEventListener("click", allClear);
 
 function allClear(button) {
   calculation = [];
+  num1 = "";
+  num2 = "";
+  operator = "";
+  updatedCurrent.value = "0";
 }
 
 delButton.addEventListener("click", deleteLast);
 
 function deleteLast(button) {
   calculation.pop();
+  updatedCurrent.value = calculation.join("");
 }
 
 equalButton.addEventListener("click", calculate);
@@ -66,4 +73,6 @@ function calculate(button) {
     case "÷":
       return num1 / num2;
   }
+
+  updatedCurrent.value = calculation.join("");
 }
