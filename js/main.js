@@ -15,7 +15,8 @@ numberButtons.forEach((button) => {
 function pushNumber(button) {
   //   alert(this.innerHTML);
   calculation.push(this.innerHTML);
-  updatedCurrent.value = calculation.join("");
+  // updatedCurrent.value = calculation.join("");
+  updatedCurrent.innerText = calculation.join("");
 }
 
 operatorButtons.forEach((button) => {
@@ -25,7 +26,7 @@ operatorButtons.forEach((button) => {
 function pushOperator(button) {
   //   alert(this.innerHTML);
   calculation.push(this.innerHTML);
-  updatedCurrent.value = calculation.join("");
+  updatedCurrent.innerText = calculation.join("");
 }
 
 acButton.addEventListener("click", allClear);
@@ -35,14 +36,14 @@ function allClear(button) {
   num1 = "";
   num2 = "";
   operator = "";
-  updatedCurrent.value = "0";
+  updatedCurrent.innerText = "";
 }
 
 delButton.addEventListener("click", deleteLast);
 
 function deleteLast(button) {
   calculation.pop();
-  updatedCurrent.value = calculation.join("");
+  updatedCurrent.innerText = calculation.join("");
 }
 
 equalButton.addEventListener("click", calculate);
@@ -51,28 +52,52 @@ function calculate(button) {
   //   alert(calculation);
   let num1 = "";
   let num2 = "";
-  let operator = "";
-  let maths = "+−×÷";
+  let operator = null;
+  const operators = ["+", "−", "×", "÷"];
+  let answer;
+  // let maths = "+−×÷";
 
-  for (i = 0; i < calculation.length; i++) {
-    if (maths.includes(calculation[i])) {
-      operator += calculation[i];
-    } else if (operator === undefined) {
-      num1 += calculation[i];
+  for (let i = 0; i < calculation.length; i++) {
+    const calcChar = calculation[i];
+    if (operators.includes(calcChar)) {
+      operator = calcChar;
+    } else if (!operator) {
+      num1 += calcChar;
     } else {
-      num2 += calculation[i];
+      num2 += calcChar;
     }
   }
-  switch (operator) {
-    case "+":
-      return num1 + num2;
-    case "−":
-      return num1 - num2;
-    case "×":
-      return num1 * num2;
-    case "÷":
-      return num1 / num2;
+
+  num1 = parseFloat(num1);
+  num2 = parseFloat(num2);
+
+  if (operator === "+") {
+    answer = num1 + num2;
+  } else if (operator === "−") {
+    answer = num1 - num2;
+  } else if (operator === "×") {
+    answer = num1 * num2;
+  } else if (operator === "÷") {
+    answer = num1 / num2;
   }
 
-  updatedCurrent.value = calculation.join("");
+  const finalAnswer = answer;
+
+  // }
+  // switch (operator) {
+  //   case "+":
+  //     return num1 + num2;
+  //     break;
+  //   case "−":
+  //     return num1 - num2;
+  //     break;
+  //   case "×":
+  //     return num1 * num2;
+  //     break;
+  //   case "÷":
+  //     return num1 / num2;
+  //     break;
+  // }
+
+  updatedCurrent.innerText = finalAnswer;
 }
