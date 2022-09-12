@@ -15,7 +15,6 @@ numberButtons.forEach((button) => {
 function pushNumber(button) {
   //   alert(this.innerHTML);
   calculation.push(this.innerHTML);
-  // updatedCurrent.value = calculation.join("");
   updatedCurrent.innerText = calculation.join("");
 }
 
@@ -55,7 +54,6 @@ function calculate(button) {
   let operator = null;
   const operators = ["+", "−", "×", "÷"];
   let answer;
-  // let maths = "+−×÷";
 
   for (let i = 0; i < calculation.length; i++) {
     const calcChar = calculation[i];
@@ -82,22 +80,5 @@ function calculate(button) {
   }
 
   const finalAnswer = answer;
-
-  // }
-  // switch (operator) {
-  //   case "+":
-  //     return num1 + num2;
-  //     break;
-  //   case "−":
-  //     return num1 - num2;
-  //     break;
-  //   case "×":
-  //     return num1 * num2;
-  //     break;
-  //   case "÷":
-  //     return num1 / num2;
-  //     break;
-  // }
-
   updatedCurrent.innerText = finalAnswer;
 }
